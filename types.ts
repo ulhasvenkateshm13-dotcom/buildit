@@ -60,3 +60,22 @@ export interface AIResponseSchema {
   recommendedProductIds?: string[];
   bundle?: ProjectBundle;
 }
+
+export enum OrderStatus {
+  PLACED = 'Order Placed',
+  PACKED = 'Packed',
+  OUT_FOR_DELIVERY = 'Out for Delivery',
+  ARRIVED = 'Arrived'
+}
+
+export interface Order {
+  id: string;
+  items: CartItem[];
+  total: number;
+  status: OrderStatus;
+  driverName: string;
+  vehicleNumber: string;
+  eta: number; // minutes
+  placedAt: string;
+  progress: number; // 0-100 represents the delivery journey
+}
